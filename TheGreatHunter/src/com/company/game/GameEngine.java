@@ -51,18 +51,18 @@ public class GameEngine implements Runnable {
 		this.init();
 
         while (isRunning) {
-           this.tick();
-           this.render();
+           this.update();
+           this.draw();
         }
 
         this.stop();
 	}
 	
-	private void tick() {
+	private void update() {
 		x++;
 	}
 	
-	private void render() {
+	private void draw() {
 		this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
 		
 		if (this.bufferStrategy == null) {
