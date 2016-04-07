@@ -2,7 +2,6 @@ package com.company.graphics;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 

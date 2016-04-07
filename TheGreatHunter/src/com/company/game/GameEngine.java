@@ -80,11 +80,12 @@ public class GameEngine implements Runnable {
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
         this.graphics.drawImage(this.sheet.crop(0, 0, 85, 83), 50, 450, null);
+        
 
         // -> END DRAWING
 
-        this.graphics.dispose();
         this.bufferStrategy.show();
+        this.graphics.dispose();      
     }
 
     private void init() {
