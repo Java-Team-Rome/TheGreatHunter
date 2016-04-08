@@ -1,10 +1,9 @@
 package com.company.models;
 
-import java.awt.Graphics;
-
 import com.company.interfaces.Killer;
 
-public class Hunter extends GameObject implements Killer{
+public class Hunter implements Killer{
+	private final Inventory inventory = new Inventory();
 
 	@Override
 	public void kill(Prey prey) {
@@ -12,16 +11,7 @@ public class Hunter extends GameObject implements Killer{
 		
 	}
 
-	@Override
-	public void display(Graphics graphics) {
-		// TODO Auto-generated method stub
-		
+	public Inventory getInventory() {
+		return inventory;
 	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

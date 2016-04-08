@@ -1,8 +1,5 @@
 package com.company.models;
 
-/**
- * Created by Stark on 4/7/2016.
- */
 public class Inventory {
 
     private int meat;
