@@ -9,6 +9,9 @@ public abstract class Prey extends GameObject {
 	private double weight;
 	private SecondaryResourceType secondaryResourceType;
 	private double meatPercentage;
+	public SecondaryResourceType getSecondaryResourceType;
+	public Object getWeight;
+	public double getMeatPercentage;
 
 	public Prey(int x, int y, BufferedImage gameObjectImage, double weight, double meatPercentage,SecondaryResourceType secondaryResourceType) {
 		super(x, y, gameObjectImage);

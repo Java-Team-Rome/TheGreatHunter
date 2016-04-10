@@ -1,12 +1,15 @@
 package com.company.models;
 
+
 import com.company.enums.SecondaryResourceType;
 
-public class Inventory {
+import java.util.function.Consumer;
 
-    private static double meat;
-    private static double feather;
-    private static double leather;
+public class Inventory implements Consumer<Prey> {
+
+    private double meat;
+    private double feather;
+    private double leather;
 
     public double getMeat() {
         return meat;
@@ -33,22 +36,18 @@ public class Inventory {
     }
 
 
-    interface Consumer<Prey>{
+    @Override
+    public void accept(Prey prey) {
+        this.meat += prey.getWeight() * prey.getMeatPercentage();
 
-        this.meat += prey.getWeith * prey.getMeatPercentage;
-
-        if (prey.getSecondoryresourceType.equals(SecondaryResourceType.LEATHER){
-            leather += prey.getWeight * ( 1 - prey.getMeatPercentage);
+        if (prey.getSecondaryResourceType.equals(SecondaryResourceType.LEATHER)){
+            leather += prey.getWeight() * ( 1 - prey.getMeatPercentage);
         }
 
-        else if (prey.getSecondoryresourceType.equals(SecondaryResourceType.FEATHER){
-            feather += prey.getWeight * ( 1 - prey.getMeatPercentage);
+        else if (prey.getSecondaryResourceType.equals(SecondaryResourceType.FEATHER)){
+            feather += prey.getWeight() * ( 1 - prey.getMeatPercentage);
         }
-
-
-
     }
-
 }
 
 
@@ -58,4 +57,4 @@ public class Inventory {
 
 
 
-}
+
