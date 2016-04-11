@@ -4,9 +4,12 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
 import com.company.graphics.SpriteSheet;
+import com.company.models.GameObject;
+import com.company.models.prey.Rabbit;
 
 public class GameEngine implements Runnable {
 
@@ -16,8 +19,7 @@ public class GameEngine implements Runnable {
     private Thread thread;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-    private int x;
-    private SpriteSheet sheet;
+    private Rabbit rabbit;
 
     BufferedImage background;
 
@@ -53,16 +55,39 @@ public class GameEngine implements Runnable {
     public void run() {
         this.init();
 
+        int fps = 30;
+        double timePerTick = 1_000_000_000.0 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
+        
+        
         while (isRunning) {
-            this.update();
-            this.draw();
+            now = System.nanoTime();
+            delta += (now-lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if (delta >= 1) {
+            	 this.update();
+                 this.draw();
+                ticks++;
+                delta--;
+            }
+
+            if (timer >= 1_000_000_000) {
+                ticks = 0;
+                timer = 0;
+            }
         }
 
         this.stop();
     }
 
     private void update() {
-        x++;
+    	rabbit.update();
     }
 
     private void draw() {
@@ -79,8 +104,7 @@ public class GameEngine implements Runnable {
 
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
-        this.graphics.drawImage(this.sheet.crop(0, 0, 85, 83), 50, 450, null);
-        
+        rabbit.display(graphics);
 
         // -> END DRAWING
 
@@ -91,7 +115,7 @@ public class GameEngine implements Runnable {
     private void init() {
 
         this.display = new Display(this.title, 800, 600);
-        this.sheet = new SpriteSheet(ImageLoader.loadImage("/rabbit.png"));
-        this.x = 50;
+        Assets.init();
+        rabbit = new Rabbit(100, 100);
     }
 }

@@ -1,6 +1,8 @@
 package com.company.models;
 
 import com.company.enums.SecondaryResourceType;
+import com.company.models.prey.Prey;
+
 import java.util.function.Consumer;
 
 public class Inventory implements Consumer<Prey> {

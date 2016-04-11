@@ -1,20 +1,25 @@
 package com.company.models;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
+import com.company.graphics.SpriteSheet;
 import com.company.interfaces.Displayable;
 import com.company.interfaces.Updateable;
 
 public abstract class GameObject implements Displayable, Updateable {
 	private int x;
     private int y;
-    private BufferedImage gameObjectImage;
+    private SpriteSheet spriteSheet;
+    private int width;
+    private int height;
+    private int col;
     
-	public GameObject(int x, int y, BufferedImage gameObjectImage) {
+	public GameObject(int x, int y, SpriteSheet spriteSheet, int width, int height) {
 		this.x = x;
 		this.y = y;
-		this.gameObjectImage = gameObjectImage;
+		this.spriteSheet = spriteSheet;
+		this.width = width;
+		this.height = height;
 	}
 
 	public int getX() {
@@ -33,18 +38,21 @@ public abstract class GameObject implements Displayable, Updateable {
 		this.y = y;
 	}
 
-	public BufferedImage getGameObjectImage() {
-		return gameObjectImage;
+	public SpriteSheet getSpriteSheet() {
+		return spriteSheet;
 	}
 
-	public void setGameObjectImage(BufferedImage gameObjectImage) {
-		this.gameObjectImage = gameObjectImage;
+	public void setSpriteSheet(SpriteSheet spriteSheet) {
+		this.spriteSheet = spriteSheet;
 	}
-    
 
 	public void display(Graphics graphics) {
-		graphics.drawImage(this.getGameObjectImage(), this.getX(), this.getY(), null);
+		graphics.drawImage(this.spriteSheet.crop(col*width, 0, width, height), this.getX(), this.getY(), null);
 	}
 
-	public void update() {}
+	public void update() {
+		col++;
+		col %= 3;
+		this.x += 20;
+	}
 }

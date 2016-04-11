@@ -1,8 +1,8 @@
-package com.company.models;
+package com.company.models.prey;
 
 import com.company.enums.SecondaryResourceType;
-
-import java.awt.image.BufferedImage;
+import com.company.graphics.SpriteSheet;
+import com.company.models.GameObject;
 
 public abstract class Prey extends GameObject {
 	
@@ -10,8 +10,12 @@ public abstract class Prey extends GameObject {
 	private SecondaryResourceType secondaryResourceType;
 	private double meatPercentage;
 
-	public Prey(int x, int y, BufferedImage gameObjectImage, double weight, double meatPercentage,SecondaryResourceType secondaryResourceType) {
-		super(x, y, gameObjectImage);
+
+	public Prey(int x, int y, SpriteSheet spriteSheet, 
+			int width, int height, double weight, 
+			double meatPercentage, 
+			SecondaryResourceType secondaryResourceType) {
+		super(x, y, spriteSheet, width, height);
 		this.weight = weight;
 		this.meatPercentage = meatPercentage;
 		this.secondaryResourceType = secondaryResourceType;
