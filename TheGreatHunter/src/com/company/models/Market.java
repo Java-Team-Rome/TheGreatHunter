@@ -5,9 +5,9 @@ import java.util.function.Consumer;
 
 public class Market implements Consumer<Hunter> {
 
-    private final double PRICE_MEAT_PER_UNIT = 20;
-    private final double PRICE_LEATHER_PER_UNIT = 40;
-    private final double PRICE_FEATHER_PER_UNIT = 10;
+    private static final double PRICE_MEAT_PER_UNIT = 20;
+    private static final double PRICE_LEATHER_PER_UNIT = 40;
+    private static final double PRICE_FEATHER_PER_UNIT = 10;
 
     private double priceMeatPerUnit;
     private double priceLeatherPerUnit;
@@ -16,9 +16,9 @@ public class Market implements Consumer<Hunter> {
     private static Market instance;
 
     private Market(double priceMeatPerUnit, double priceLeatherPerUnit, double priceFeatherPerUnit) {
-        this.priceMeatPerUnit = PRICE_MEAT_PER_UNIT;
-        this.priceLeatherPerUnit = PRICE_LEATHER_PER_UNIT;
-        this.priceFeatherPerUnit = PRICE_FEATHER_PER_UNIT;
+        this.priceMeatPerUnit = priceMeatPerUnit;
+        this.priceLeatherPerUnit = priceLeatherPerUnit;
+        this.priceFeatherPerUnit = priceFeatherPerUnit;
     }
 
     public static Market getInstance() {
