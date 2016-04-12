@@ -9,6 +9,8 @@ import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
 import com.company.graphics.SpriteSheet;
 import com.company.models.GameObject;
+import com.company.models.prey.Duck;
+import com.company.models.prey.Fox;
 import com.company.models.prey.Rabbit;
 
 public class GameEngine implements Runnable {
@@ -20,6 +22,8 @@ public class GameEngine implements Runnable {
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private Rabbit rabbit;
+    private Fox fox;
+    private Duck duck;
 
     BufferedImage background;
 
@@ -88,6 +92,8 @@ public class GameEngine implements Runnable {
 
     private void update() {
     	rabbit.update();
+        fox.update();
+        duck.update();
     }
 
     private void draw() {
@@ -105,6 +111,9 @@ public class GameEngine implements Runnable {
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
         rabbit.display(graphics);
+        fox.display(graphics);
+        duck.display(graphics);
+
 
         // -> END DRAWING
 
@@ -116,6 +125,8 @@ public class GameEngine implements Runnable {
 
         this.display = new Display(this.title, 800, 600);
         Assets.init();
-        rabbit = new Rabbit(100, 100);
+        rabbit = new Rabbit(100, 400);
+        fox = new Fox(200,200);
+        duck = new Duck(100, 100);
     }
 }

@@ -2,7 +2,9 @@ package com.company.enums;
 
 public enum ImageAlbum {
     Background("/green.jpg"),
-    Rabbit("/rabbit.png");
+    Rabbit("/rabbit.png"),
+    Duck("/duck.png"),
+    Fox("/fox.png");
 
     private String path;
 
