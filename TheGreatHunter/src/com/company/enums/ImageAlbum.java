@@ -4,7 +4,11 @@ public enum ImageAlbum {
     Background("/green.jpg"),
     Rabbit("/rabbit.png"),
     Duck("/duck.png"),
-    Fox("/fox.png");
+    Fox("/fox.png"),
+    Wolf("/wolf.png"),
+    Deer("/deer.png");
+
+
 
     private String path;
 
