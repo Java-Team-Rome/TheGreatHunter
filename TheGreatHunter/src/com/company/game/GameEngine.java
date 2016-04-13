@@ -7,14 +7,12 @@ import java.awt.image.BufferedImage;
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
-import com.company.graphics.SpriteSheet;
-import com.company.models.GameObject;
 import com.company.models.prey.*;
 
 public class GameEngine implements Runnable {
 
     private String title;
-    private boolean isRunning = false;
+    private boolean isRunning;
     private Display display;
     private Thread thread;
     private BufferStrategy bufferStrategy;
@@ -32,26 +30,21 @@ public class GameEngine implements Runnable {
     }
 
     public synchronized void start() {
-        if (isRunning) {
-            return;
+        if (!isRunning) {
+        	 this.isRunning = true;
+             this.thread = new Thread(this);
+             this.thread.start();
         }
-
-        this.isRunning = true;
-        this.thread = new Thread(this);
-        thread.start();
     }
 
     public synchronized void stop() {
-        if (!isRunning) {
-            return;
-        }
-
-        this.isRunning = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (isRunning) {
+        	try {
+        		this.isRunning = false;
+	            this.thread.join();
+        	} catch (InterruptedException e) {
+        		e.printStackTrace();
+        	}
         }
     }
 
@@ -121,8 +114,9 @@ public class GameEngine implements Runnable {
 
         // -> END DRAWING
 
+        this.graphics.dispose();  
         this.bufferStrategy.show();
-        this.graphics.dispose();      
+            
     }
 
     private void init() {
