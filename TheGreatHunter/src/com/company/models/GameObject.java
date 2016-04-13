@@ -6,6 +6,7 @@ import com.company.graphics.SpriteSheet;
 import com.company.interfaces.Displayable;
 import com.company.interfaces.Updateable;
 
+// TODO change spriteSheet to bufferImage
 public abstract class GameObject implements Displayable, Updateable {
 	private int x;
     private int y;

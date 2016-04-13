@@ -8,6 +8,7 @@ import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
 import com.company.models.prey.*;
+import com.company.states.MainMenuState;
 
 public class GameEngine implements Runnable {
 
@@ -23,8 +24,8 @@ public class GameEngine implements Runnable {
     private Wolf wolf;
     private Deer deer;
 
-    BufferedImage background;
-
+    MainMenuState mainMenu;
+    
     public GameEngine(String title) {
         this.title = title;
     }
@@ -110,7 +111,7 @@ public class GameEngine implements Runnable {
         duck.display(graphics);
         wolf.display(graphics);
         deer.display(graphics);
-
+       
 
         // -> END DRAWING
 
@@ -128,5 +129,7 @@ public class GameEngine implements Runnable {
         duck = new Duck(100, 100);
         wolf = new Wolf(300, 300);
         deer = new Deer(200, 300);
+        
+        mainMenu = new MainMenuState();
     }
 }
