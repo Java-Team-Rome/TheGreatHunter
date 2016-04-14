@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class Display {
 	private int width;
@@ -21,11 +22,15 @@ public class Display {
 
         initDisplay();
     }
+    
+    public Canvas getCanvas() {
+        return this.canvas;
+    }
 
     private void initDisplay() {
         this.frame = new JFrame(this.title);
         this.frame.setSize(width, height);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setResizable(false);
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
@@ -37,11 +42,6 @@ public class Display {
         this.canvas.setMinimumSize(new Dimension(width, height));
 
         this.frame.add(this.canvas);
-
         this.frame.pack();
-    }
-
-    public Canvas getCanvas() {
-        return this.canvas;
     }
 }

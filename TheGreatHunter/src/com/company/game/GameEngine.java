@@ -1,22 +1,18 @@
 package com.company.game;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
-import com.company.graphics.SpriteSheet;
-import com.company.models.GameObject;
-import com.company.models.prey.Duck;
-import com.company.models.prey.Fox;
-import com.company.models.prey.Rabbit;
+import com.company.models.prey.*;
+import com.company.states.MainMenuState;
 
 public class GameEngine implements Runnable {
 
     private String title;
-    private boolean isRunning = false;
+    private boolean isRunning;
     private Display display;
     private Thread thread;
     private BufferStrategy bufferStrategy;
@@ -24,34 +20,31 @@ public class GameEngine implements Runnable {
     private Rabbit rabbit;
     private Fox fox;
     private Duck duck;
+    private Wolf wolf;
+    private Deer deer;
 
-    BufferedImage background;
-
+    MainMenuState mainMenu;
+    
     public GameEngine(String title) {
         this.title = title;
     }
 
     public synchronized void start() {
-        if (isRunning) {
-            return;
+        if (!isRunning) {
+        	 this.isRunning = true;
+             this.thread = new Thread(this);
+             this.thread.start();
         }
-
-        this.isRunning = true;
-        this.thread = new Thread(this);
-        thread.start();
     }
 
     public synchronized void stop() {
-        if (!isRunning) {
-            return;
-        }
-
-        this.isRunning = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (isRunning) {
+        	try {
+        		this.isRunning = false;
+	            this.thread.join();
+        	} catch (InterruptedException e) {
+        		e.printStackTrace();
+        	}
         }
     }
 
@@ -94,6 +87,8 @@ public class GameEngine implements Runnable {
     	rabbit.update();
         fox.update();
         duck.update();
+        wolf.update();
+        deer.update();
     }
 
     private void draw() {
@@ -110,15 +105,21 @@ public class GameEngine implements Runnable {
 
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
+        for (Prey a :MapInitializer.PopulateMap()) {
+            a.display(graphics);
+        }
         rabbit.display(graphics);
         fox.display(graphics);
         duck.display(graphics);
-
+        wolf.display(graphics);
+        deer.display(graphics);
+       
 
         // -> END DRAWING
 
+        this.graphics.dispose();  
         this.bufferStrategy.show();
-        this.graphics.dispose();      
+            
     }
 
     private void init() {
@@ -128,5 +129,9 @@ public class GameEngine implements Runnable {
         rabbit = new Rabbit(100, 400);
         fox = new Fox(200,200);
         duck = new Duck(100, 100);
+        wolf = new Wolf(300, 300);
+        deer = new Deer(200, 300);
+        
+        mainMenu = new MainMenuState();
     }
 }

@@ -8,12 +8,12 @@ public class RandomGenerator {
     private static void init(){
         random = new Random();
     }
-    public static int getNextRandom()
+    public static int getNextRandom(int a)
     {
         if (random == null){
             init();
         }
-        return random.nextInt(100);
+        return random.nextInt(a);
     }
 
 }
