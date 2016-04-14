@@ -12,16 +12,20 @@ public class Assets {
 	 public static SpriteSheet fox;
 	 public static SpriteSheet wolf;
 	 public static SpriteSheet deer;
-	 
-	 public static void init() {
-		 background = ImageLoader.loadImage(ImageAlbum.Background.getPath());
-		 
-		 button = ImageLoader.loadImage(ImageAlbum.Button.getPath());
-		 
-		 rabbit = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Rabbit.getPath()));
-		 duck = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Duck.getPath()));
-		 fox = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Fox.getPath()));
-		 wolf = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Wolf.getPath()));
-		 deer = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Deer.getPath()));
-	 }
+	 public static SpriteSheet boar;
+	 public static SpriteSheet eagle;
+
+    public static void init() {
+        background = ImageLoader.loadImage(ImageAlbum.Background.getPath());
+        
+        button = ImageLoader.loadImage(ImageAlbum.Button.getPath());
+        
+        rabbit = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Rabbit.getPath()));
+        duck = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Duck.getPath()));
+        fox = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Fox.getPath()));
+        wolf = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Wolf.getPath()));
+        deer = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Deer.getPath()));
+        boar = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Boar.getPath()));
+	   eagle = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Eagle.getPath()));
+    }
 }

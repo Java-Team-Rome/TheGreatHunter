@@ -22,6 +22,8 @@ public class GameEngine implements Runnable {
     private Duck duck;
     private Wolf wolf;
     private Deer deer;
+    private Boar boar;
+    private Eagle eagle;
 
     MainMenuState mainMenu;
     
@@ -31,20 +33,20 @@ public class GameEngine implements Runnable {
 
     public synchronized void start() {
         if (!isRunning) {
-        	 this.isRunning = true;
-             this.thread = new Thread(this);
-             this.thread.start();
+            this.isRunning = true;
+            this.thread = new Thread(this);
+            this.thread.start();
         }
     }
 
     public synchronized void stop() {
         if (isRunning) {
-        	try {
-        		this.isRunning = false;
-	            this.thread.join();
-        	} catch (InterruptedException e) {
-        		e.printStackTrace();
-        	}
+            try {
+                this.isRunning = false;
+                this.thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -59,17 +61,17 @@ public class GameEngine implements Runnable {
         long lastTime = System.nanoTime();
         long timer = 0;
         int ticks = 0;
-        
-        
+
+
         while (isRunning) {
             now = System.nanoTime();
-            delta += (now-lastTime) / timePerTick;
+            delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
 
             if (delta >= 1) {
-            	 this.update();
-                 this.draw();
+                this.update();
+                this.draw();
                 ticks++;
                 delta--;
             }
@@ -84,11 +86,13 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
-    	rabbit.update();
+        rabbit.update();
         fox.update();
         duck.update();
         wolf.update();
         deer.update();
+        boar.update();
+        eagle.update();
     }
 
     private void draw() {
@@ -102,24 +106,26 @@ public class GameEngine implements Runnable {
         this.graphics = this.bufferStrategy.getDrawGraphics();
 
         // -> START DRAWING
-
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
+        
         for (Prey a :MapInitializer.PopulateMap()) {
             a.display(graphics);
         }
+        
         rabbit.display(graphics);
         fox.display(graphics);
         duck.display(graphics);
         wolf.display(graphics);
         deer.display(graphics);
-       
+        boar.display(graphics);
+        eagle.display(graphics);
 
         // -> END DRAWING
 
-        this.graphics.dispose();  
+        this.graphics.dispose();
         this.bufferStrategy.show();
-            
+
     }
 
     private void init() {
@@ -127,11 +133,14 @@ public class GameEngine implements Runnable {
         this.display = new Display(this.title, 800, 600);
         Assets.init();
         rabbit = new Rabbit(100, 400);
-        fox = new Fox(200,200);
+        fox = new Fox(200, 200);
         duck = new Duck(100, 100);
         wolf = new Wolf(300, 300);
         deer = new Deer(200, 300);
+        boar = new Boar(300,200);
+        eagle = new Eagle(150,200);
         
         mainMenu = new MainMenuState();
+
     }
 }
