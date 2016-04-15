@@ -10,7 +10,7 @@ public class GameState extends State {
 
 	private Prey prey;
     private int timer;
-
+    
     public GameState() {
     	prey = MapInitializer.generatePray();
 	}
