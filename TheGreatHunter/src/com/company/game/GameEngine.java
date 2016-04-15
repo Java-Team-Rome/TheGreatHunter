@@ -17,6 +17,10 @@ public class GameEngine implements Runnable {
     private Thread thread;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
+    
+    Prey prey;
+    
+    int timer;
 
     MainMenuState mainMenu;
     
@@ -79,7 +83,15 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
-
+    	timer++;
+    	
+    	if (timer == 3) {
+    		prey.isHasEscaped();
+    		prey = MapInitializer.generatePray();
+    		timer = 0;
+		}
+    	prey.update();
+        
     }
 
     private void draw() {
@@ -96,10 +108,10 @@ public class GameEngine implements Runnable {
         graphics.clearRect(0, 0, 800, 600);
         this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
         
-        for (Prey a :MapInitializer.PopulateMap()) {
-            a.display(graphics);
-        }
-
+    	if (prey.isAlive() && !prey.isHasEscaped()) {
+    		prey.display(graphics);
+		}
+        
         // -> END DRAWING
 
         this.graphics.dispose();
@@ -112,7 +124,9 @@ public class GameEngine implements Runnable {
         this.display = new Display(this.title, 800, 600);
         Assets.init();
         
+        
         mainMenu = new MainMenuState();
-
+        
+        prey = MapInitializer.generatePray();
     }
 }

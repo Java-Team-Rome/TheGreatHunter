@@ -6,13 +6,17 @@ import java.io.*;
 import java.util.*;
 
 public class HighScores {
+	
     private static String ScoresPath = "/HighScores.txt";
+    
     private static HashMap<String,HunterScore> highScores = new HashMap<String,HunterScore>();
-    public static HashMap<String, HunterScore> GetScores()
+    
+    public static HashMap<String, HunterScore> getScores()
     {
         return highScores;
     }
-    public static void Load() {
+    
+    public static void load() {
         try (BufferedReader fileReader = new BufferedReader(new FileReader(ScoresPath))) {
             String line = fileReader.readLine();
             String[] input;
@@ -29,7 +33,8 @@ public class HighScores {
             System.err.println("Cannot read the file");
         }
     }
-    public static void Save(String name, HunterScore score) {
+    
+    public static void save(String name, HunterScore score) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath), true)) {
             writer.println(name + " " + score.getGold() + " " + score.getAmountOfPreyKilled());
         } catch (IOException e) {

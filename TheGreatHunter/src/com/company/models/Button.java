@@ -13,7 +13,7 @@ public class Button extends GameObject implements Displayable {
     BufferedImage gameObjectIcon;
 
     public Button(int x, int y, String name, BufferedImage gameObjectIcon ) {
-		super(x, y, null, 0, 0);
+		super(x, y);
 		this.name = name;
 		this.gameObjectIcon = gameObjectIcon;
 		this.rectangle = new Rectangle(this.getX(), this.getY(),
