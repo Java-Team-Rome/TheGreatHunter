@@ -92,6 +92,7 @@ public abstract class Prey extends GameObject {
 
 	@Override
 	public void update() {
+		System.out.println(speed);
 		speed++;
 		speed %= 3;
 		this.setX(getX() + 20);

@@ -4,23 +4,25 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import com.company.interfaces.Displayable;
-
-public class Button extends GameObject implements Displayable {
+public class Button extends GameObject {
 
     public String name;
-    Rectangle rectangle;
+    Rectangle colliderBox;
     BufferedImage gameObjectIcon;
 
     public Button(int x, int y, String name, BufferedImage gameObjectIcon ) {
 		super(x, y);
 		this.name = name;
 		this.gameObjectIcon = gameObjectIcon;
-		this.rectangle = new Rectangle(this.getX(), this.getY(),
+		this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.gameObjectIcon.getWidth(), this.gameObjectIcon.getHeight());
 	}
+  
+    public Rectangle getColliderBox() {
+		return colliderBox;
+	}
 
-    @Override
+	@Override
 	public void update() {
     }
 

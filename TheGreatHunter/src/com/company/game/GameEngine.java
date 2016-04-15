@@ -3,11 +3,15 @@ package com.company.game;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+import com.company.events.MouseInput;
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
 import com.company.models.prey.*;
+import com.company.states.GameState;
 import com.company.states.MainMenuState;
+import com.company.states.State;
+import com.company.states.StateManager;
 
 public class GameEngine implements Runnable {
 
@@ -17,12 +21,9 @@ public class GameEngine implements Runnable {
     private Thread thread;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-    
-    Prey prey;
-    
-    int timer;
-
-    MainMenuState mainMenu;
+    private MouseInput mouseInput;
+    private State mainMenuState;
+    private State gameState;
     
     public GameEngine(String title) {
         this.title = title;
@@ -68,7 +69,7 @@ public class GameEngine implements Runnable {
 
             if (delta >= 1) {
                 this.update();
-                this.draw();
+                this.display();
                 ticks++;
                 delta--;
             }
@@ -83,18 +84,12 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
-    	timer++;
-    	
-    	if (timer == 3) {
-    		prey.isHasEscaped();
-    		prey = MapInitializer.generatePray();
-    		timer = 0;
-		}
-    	prey.update();
-        
+    	  if(StateManager.getCurrentState() != null) {
+              StateManager.getCurrentState().update();
+          }
     }
 
-    private void draw() {
+    private void display() {
         this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
 
         if (this.bufferStrategy == null) {
@@ -106,27 +101,23 @@ public class GameEngine implements Runnable {
 
         // -> START DRAWING
         graphics.clearRect(0, 0, 800, 600);
-        this.graphics.drawImage(ImageLoader.loadImage("/green.jpg"), 0, 0, 800, 600, null);
         
-    	if (prey.isAlive() && !prey.isHasEscaped()) {
-    		prey.display(graphics);
-		}
-        
+        if(StateManager.getCurrentState() != null) {
+            StateManager.getCurrentState().display(graphics);
+        }
         // -> END DRAWING
 
         this.graphics.dispose();
         this.bufferStrategy.show();
-
     }
 
     private void init() {
-
+		Assets.init();
         this.display = new Display(this.title, 800, 600);
-        Assets.init();
-        
-        
-        mainMenu = new MainMenuState();
-        
-        prey = MapInitializer.generatePray();
+        this.mouseInput =new MouseInput(this.display);
+        mainMenuState = new MainMenuState();
+        //highScoreState = new HighScoresState();
+
+        StateManager.setCurrentState(mainMenuState);
     }
 }
