@@ -17,13 +17,6 @@ public class GameEngine implements Runnable {
     private Thread thread;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-    private Rabbit rabbit;
-    private Fox fox;
-    private Duck duck;
-    private Wolf wolf;
-    private Deer deer;
-    private Boar boar;
-    private Eagle eagle;
 
     MainMenuState mainMenu;
     
@@ -86,13 +79,7 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
-        rabbit.update();
-        fox.update();
-        duck.update();
-        wolf.update();
-        deer.update();
-        boar.update();
-        eagle.update();
+
     }
 
     private void draw() {
@@ -112,14 +99,6 @@ public class GameEngine implements Runnable {
         for (Prey a :MapInitializer.PopulateMap()) {
             a.display(graphics);
         }
-        
-        rabbit.display(graphics);
-        fox.display(graphics);
-        duck.display(graphics);
-        wolf.display(graphics);
-        deer.display(graphics);
-        boar.display(graphics);
-        eagle.display(graphics);
 
         // -> END DRAWING
 
@@ -132,13 +111,6 @@ public class GameEngine implements Runnable {
 
         this.display = new Display(this.title, 800, 600);
         Assets.init();
-        rabbit = new Rabbit(100, 400);
-        fox = new Fox(200, 200);
-        duck = new Duck(100, 100);
-        wolf = new Wolf(300, 300);
-        deer = new Deer(200, 300);
-        boar = new Boar(300,200);
-        eagle = new Eagle(150,200);
         
         mainMenu = new MainMenuState();
 

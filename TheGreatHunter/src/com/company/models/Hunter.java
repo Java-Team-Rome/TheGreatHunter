@@ -7,6 +7,7 @@ public class Hunter implements Killer{
 	private final Inventory inventory;
 	private String name;
 	private double gold;
+	private int amountOfPreyKilled;
 
 	public Hunter() {
 		inventory = new Inventory();
@@ -27,6 +28,12 @@ public class Hunter implements Killer{
 	public void setGold(double gold) {
 		this.gold = gold;
 	}
+	public void setAmountOfPreyKilled(int amountOfPreyKilled) {
+		this.amountOfPreyKilled = amountOfPreyKilled;
+	}
+	public int getAmountOfPreyKilled() {
+		return amountOfPreyKilled;
+	}
 
 	public Inventory getInventory() {
 		return inventory;
@@ -40,4 +47,5 @@ public class Hunter implements Killer{
 	public void sell() {
 		Market.getInstance().accept(this);
 	}
+
 }

@@ -10,12 +10,12 @@ public class MapInitializer {
         return pray;
     }
     private static Prey[] generatePray(int amountOfPray) {
-        String [] pray ={"fox","deer","duck","rabbit","wolf"}; //boar and eagle missing
+        String [] pray ={"fox","deer","duck","rabbit","wolf","boar","eagle"};
         Prey [] prayArray =new Prey[amountOfPray];
         for (int i = 0; i <amountOfPray ; i++) {
             String randomPray = pray[RandomGenerator.getNextRandom(pray.length)];
-            int x = RandomGenerator.getNextRandom(300);
-            int y = RandomGenerator.getNextRandom(300);
+            int x = RandomGenerator.getNextRandom(800);
+            int y = RandomGenerator.getNextRandom(600);
             Prey prayToBeCreated;
 
             switch (randomPray) {
@@ -35,8 +35,12 @@ public class MapInitializer {
                     prayToBeCreated = new Wolf(x,y);
                     prayArray[i]= prayToBeCreated;
                     break;
-                //case "boar":prayToBeCreated = new Boar(x,y);break;
-                //case "eagle":prayToBeCreated = new Eagle(x,y);break;
+                case "boar":prayToBeCreated = new Boar(x,y);
+                    prayArray[i]= prayToBeCreated;
+                    break;
+                case "eagle":prayToBeCreated = new Eagle(x,y);
+                    prayArray[i]= prayToBeCreated;
+                    break;
                 case "duck":prayToBeCreated = new Duck(x,y);
                     prayArray[i]=prayToBeCreated;
                     break;
