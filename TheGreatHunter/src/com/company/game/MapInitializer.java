@@ -18,7 +18,7 @@ public class MapInitializer {
             	randomY = RandomGenerator.getNextRandom(200);
 			} else {
 				randomX = RandomGenerator.getNextRandom(700);
-				randomY = RandomGenerator.getNextRandom(300) + 200;
+				randomY = RandomGenerator.getNextRandom(200) + 300;
             }
 
             Prey prayToBeCreated = null;
