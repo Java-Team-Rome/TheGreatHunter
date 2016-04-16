@@ -7,11 +7,11 @@ import java.util.*;
 
 public class HighScores {
 	
-    private static String ScoresPath = "/HighScores.txt";
+    private static String ScoresPath = "resources/HighScores.txt";
     
-    private static HashMap<String,HunterScore> highScores = new HashMap<String,HunterScore>();
+    private static TreeMap<String,HunterScore> highScores = new TreeMap<>();
     
-    public static HashMap<String, HunterScore> getScores()
+    public static TreeMap<String,HunterScore> getScores()
     {
         return highScores;
     }
@@ -35,7 +35,7 @@ public class HighScores {
     }
     
     public static void save(String name, HunterScore score) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath), true)) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath,true),true)) {
             writer.println(name + " " + score.getGold() + " " + score.getAmountOfPreyKilled());
         } catch (IOException e) {
             e.printStackTrace();
