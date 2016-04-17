@@ -22,7 +22,9 @@ public enum ImageAlbum {
 	MenuButton("/button-menu.png"),
 	SellButton("/button-sell.png"),
 	ScoreList("/scoreList.png"),
-	Receipt("/receipt.png");
+	Receipt("/receipt.png"),
+	Trophy("/trophy.png"),
+	Gold("/gold.png");
 
     private String path;
 

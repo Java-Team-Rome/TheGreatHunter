@@ -22,6 +22,8 @@ public class Assets {
 	 public static BufferedImage stickyNote;
 	 public static BufferedImage scoreList;
 	 public static BufferedImage receipt;
+	 public static BufferedImage trophy;
+	 public static BufferedImage gold;
 	 
 	 public static SpriteSheet rabbit;
 	 public static SpriteSheet duck;
@@ -49,6 +51,8 @@ public class Assets {
         scoreList = ImageLoader.loadImage(ImageAlbum.ScoreList.getPath());
         stickyNote = ImageLoader.loadImage(ImageAlbum.StickyNote.getPath());
         sight = ImageLoader.loadImage(ImageAlbum.Sight.getPath());
+        trophy = ImageLoader.loadImage(ImageAlbum.Trophy.getPath());
+        gold = ImageLoader.loadImage(ImageAlbum.Gold.getPath());
         
         rabbit = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Rabbit.getPath()));
         duck = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Duck.getPath()));

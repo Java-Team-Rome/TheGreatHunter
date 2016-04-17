@@ -15,6 +15,7 @@ public class HighScoresState extends State {
 		graphics.drawImage(Assets.highscoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 		
 		graphics.drawImage(Assets.scoreList, 300, 120, null);
+		graphics.drawImage(Assets.trophy, 180, 220, null);
 		
 		// DRAW SCORES HERE:
 		

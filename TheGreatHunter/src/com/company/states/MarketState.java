@@ -14,6 +14,7 @@ public class MarketState extends State {
 	public void display(Graphics graphics) {
 		graphics.drawImage(Assets.marketBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 		graphics.drawImage(Assets.receipt, 460, 170, null);
+		graphics.drawImage(Assets.gold, 380, 380, null);
 		
 		//DRAW LIST OF INVENTIRY HERE:
 		
