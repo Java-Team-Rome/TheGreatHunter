@@ -13,7 +13,7 @@ public abstract class Prey extends GameObject {
 	private SecondaryResourceType secondaryResourceType;
 	private double meatPercentage;
 	private boolean isAlive;
-	private int speed;
+	protected int speed;
     private int width;
     private int height;
     SpriteSheet spriteSheet;
