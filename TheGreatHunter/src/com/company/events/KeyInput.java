@@ -33,6 +33,9 @@ public class KeyInput implements KeyListener{
             else if (key == KeyEvent.VK_BACK_SPACE && InputNameState.sb.length()>0) {
                 InputNameState.sb.deleteCharAt(InputNameState.sb.length()-1);
             }
+            else if (key == KeyEvent.VK_SPACE){
+                InputNameState.sb.append(" ");
+            }
         }
     }
 
