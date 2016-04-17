@@ -56,7 +56,7 @@ public class GameState extends State {
 		
 		seconds--;
 		if (seconds < 0) {
-			 StateManager.setCurrentState(new MarketState());
+			 StateManager.setCurrentState(new MarketState(this.hunter));
 		}			
 	}
 	
@@ -64,9 +64,8 @@ public class GameState extends State {
 		return this.prey;
 	}
 	
-	public void killPrey(Prey currentPrey) {
-		this.hunter.kill(currentPrey);
-		this.hunter.setAmountOfPreyKilled(this.hunter.getAmountOfPreyKilled() + 1);
+	public Hunter getHunter() {
+		return this.hunter;
 	}
 	
 	public void setMousePosition(int x, int y) {

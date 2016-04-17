@@ -54,7 +54,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	        	 GameState gameState = (GameState)StateManager.getCurrentState();
 	        	 
 	        	if (gameState.getCurrentPrey().getColliderBox().contains(mouseX, mouseY)) {
-					gameState.killPrey(gameState.getCurrentPrey());
+					gameState.getHunter().kill(gameState.getCurrentPrey());
 				}
 	        } else if (StateManager.getCurrentState() instanceof InputNameState) {
 	        	
@@ -69,7 +69,12 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	        } else if (StateManager.getCurrentState() instanceof MarketState) {
 	        	// Sell button
 	        	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
-	                StateManager.setCurrentState(new HighScoresState());
+	        		 GameState gameState = (GameState)StateManager.getCurrentState();
+	        		 gameState.getHunter().sell();
+	        		 
+	        		 // TODO save high scores:
+	        		 
+	                 StateManager.setCurrentState(new HighScoresState());
 	            }
 	        } else if (StateManager.getCurrentState() instanceof HighScoresState) {
 	        	// Main menu button

@@ -40,10 +40,10 @@ public class Hunter implements Killer{
 	public void kill(Prey prey) {
 		inventory.accept(prey);
 		prey.setAlive(false);
+		this.amountOfPreyKilled++;
 	}
 	
 	public void sell() {
 		Market.getInstance().accept(this);
 	}
-
 }

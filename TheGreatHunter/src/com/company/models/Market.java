@@ -3,12 +3,9 @@ package com.company.models;
 
 import java.util.function.Consumer;
 
+import com.company.utils.Constants;
+
 public class Market implements Consumer<Hunter> {
-
-    private static final double PRICE_MEAT_PER_UNIT = 20;
-    private static final double PRICE_LEATHER_PER_UNIT = 40;
-    private static final double PRICE_FEATHER_PER_UNIT = 10;
-
     private double priceMeatPerUnit;
     private double priceLeatherPerUnit;
     private double priceFeatherPerUnit;
@@ -23,7 +20,7 @@ public class Market implements Consumer<Hunter> {
 
     public static Market getInstance() {
         if (instance == null) {
-            instance = new Market(PRICE_MEAT_PER_UNIT, PRICE_LEATHER_PER_UNIT, PRICE_FEATHER_PER_UNIT);
+            instance = new Market(Constants.PRICE_MEAT_PER_UNIT, Constants.PRICE_LEATHER_PER_UNIT, Constants.PRICE_FEATHER_PER_UNIT);
             return instance;
         }
 
