@@ -69,8 +69,8 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	        } else if (StateManager.getCurrentState() instanceof MarketState) {
 	        	// Sell button
 	        	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
-	        		 GameState gameState = (GameState)StateManager.getCurrentState();
-	        		 gameState.getHunter().sell();
+	        		MarketState marketState = (MarketState)StateManager.getCurrentState();
+	        		marketState.getCurrentHunter().sell();
 	        		 
 	        		 // TODO save high scores:
 	        		 

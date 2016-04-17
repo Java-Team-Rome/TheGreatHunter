@@ -30,4 +30,8 @@ public class MarketState extends State {
 	@Override
 	public void update() {
 	}
+	
+	public Hunter getCurrentHunter() {
+		return this.currentHunter;
+	}
 }
