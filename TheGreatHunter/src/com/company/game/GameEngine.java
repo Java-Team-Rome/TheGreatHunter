@@ -3,15 +3,18 @@ package com.company.game;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+import com.company.events.KeyInput;
 import com.company.events.MouseInput;
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.graphics.ImageLoader;
 import com.company.models.prey.*;
 import com.company.states.GameState;
+import com.company.states.InputNameState;
 import com.company.states.MainMenuState;
 import com.company.states.State;
 import com.company.states.StateManager;
+
 
 public class GameEngine implements Runnable {
 
@@ -24,7 +27,10 @@ public class GameEngine implements Runnable {
     private MouseInput mouseInput;
     private State mainMenuState;
     private State gameState;
-    
+    private State inputNameState;
+    private KeyInput keyinput;
+
+
     public GameEngine(String title) {
         this.title = title;
     }
@@ -84,9 +90,9 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
-    	  if(StateManager.getCurrentState() != null) {
-              StateManager.getCurrentState().update();
-          }
+        if(StateManager.getCurrentState() != null) {
+            StateManager.getCurrentState().update();
+        }
     }
 
     private void display() {
@@ -101,7 +107,7 @@ public class GameEngine implements Runnable {
 
         // -> START DRAWING
         graphics.clearRect(0, 0, 800, 600);
-        
+
         if(StateManager.getCurrentState() != null) {
             StateManager.getCurrentState().display(graphics);
         }
@@ -112,12 +118,16 @@ public class GameEngine implements Runnable {
     }
 
     private void init() {
-		Assets.init();
+        Assets.init();
         this.display = new Display(this.title, 800, 600);
         this.mouseInput =new MouseInput(this.display);
         mainMenuState = new MainMenuState();
+        inputNameState = new InputNameState();
+        this.keyinput = new KeyInput(this, this.display);
+
         //highScoreState = new HighScoresState();
 
-        StateManager.setCurrentState(mainMenuState);
+
+        StateManager.setCurrentState(inputNameState);
     }
 }
