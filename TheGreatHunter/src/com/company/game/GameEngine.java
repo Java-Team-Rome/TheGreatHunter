@@ -10,6 +10,7 @@ import com.company.graphics.Display;
 import com.company.states.MainMenuState;
 import com.company.states.State;
 import com.company.states.StateManager;
+import com.company.utils.Constants;
 
 
 public class GameEngine implements Runnable {
@@ -100,7 +101,7 @@ public class GameEngine implements Runnable {
         this.graphics = this.bufferStrategy.getDrawGraphics();
 
         // -> START DRAWING
-        graphics.clearRect(0, 0, 800, 600);
+        graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
         if(StateManager.getCurrentState() != null) {
             StateManager.getCurrentState().display(graphics);
@@ -113,7 +114,7 @@ public class GameEngine implements Runnable {
 
     private void init() {
         Assets.init();
-        this.display = new Display(this.title, 800, 600);
+        this.display = new Display(this.title, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         this.mouseInput =new MouseInput(this.display);
         this.keyinput = new KeyInput(this, this.display);
         
