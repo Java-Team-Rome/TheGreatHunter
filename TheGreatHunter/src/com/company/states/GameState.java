@@ -9,6 +9,7 @@ import com.company.game.MapInitializer;
 import com.company.graphics.Assets;
 import com.company.models.Hunter;
 import com.company.models.prey.Prey;
+import com.company.utils.Constants;
 
 public class GameState extends State {
 
@@ -25,7 +26,7 @@ public class GameState extends State {
 
 	@Override
 	public void display(Graphics graphics) {
-		graphics.drawImage(Assets.background, 0, 0, 800, 600, null);
+		graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
 		if (prey.isAlive() && !prey.isHasEscaped()) {
 			prey.display(graphics);
@@ -34,8 +35,8 @@ public class GameState extends State {
 		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 30);
 		graphics.setFont(secondsFont);
 		graphics.setColor(Color.white);
-		graphics.drawString(Integer.toString(seconds), 750, 50);
-		graphics.drawString(Integer.toString(this.hunter.getAmountOfPreyKilled()), 50, 50);
+		graphics.drawString(Integer.toString(seconds), 960, 40);
+		graphics.drawString(Integer.toString(this.hunter.getAmountOfPreyKilled()), 20, 40);
 		
 		if (mousePosition != null) {
 			graphics.drawImage(Assets.sight, mousePosition.x, mousePosition.y, null);

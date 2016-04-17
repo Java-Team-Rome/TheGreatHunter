@@ -8,6 +8,8 @@ public class Assets {
 	 public static BufferedImage background;
 	 public static BufferedImage sight;
 	 public static BufferedImage button;
+	 public static BufferedImage woodenWall;
+	 public static BufferedImage stickyNote;
 	 public static SpriteSheet rabbit;
 	 public static SpriteSheet duck;
 	 public static SpriteSheet fox;
@@ -18,7 +20,9 @@ public class Assets {
 
     public static void init() {
         background = ImageLoader.loadImage(ImageAlbum.Background.getPath());
-        
+        woodenWall = ImageLoader.loadImage(ImageAlbum.WoodenWall.getPath());
+        stickyNote = ImageLoader.loadImage(ImageAlbum.StickyNote.getPath());
+
         button = ImageLoader.loadImage(ImageAlbum.Button.getPath());
         sight = ImageLoader.loadImage(ImageAlbum.Sight.getPath());
         
