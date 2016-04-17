@@ -18,8 +18,8 @@ public class GameState extends State {
 	private Hunter hunter;
 	private Point mousePosition;
 
-	public GameState() {
-		hunter = new Hunter();
+	public GameState(String playerName) {
+		hunter = new Hunter(playerName);
 		prey = MapInitializer.generatePray();
 	}
 

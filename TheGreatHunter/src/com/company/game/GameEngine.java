@@ -7,10 +7,6 @@ import com.company.events.KeyInput;
 import com.company.events.MouseInput;
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
-import com.company.graphics.ImageLoader;
-import com.company.models.prey.*;
-import com.company.states.GameState;
-import com.company.states.InputNameState;
 import com.company.states.MainMenuState;
 import com.company.states.State;
 import com.company.states.StateManager;
@@ -26,8 +22,6 @@ public class GameEngine implements Runnable {
     private Graphics graphics;
     private MouseInput mouseInput;
     private State mainMenuState;
-    private State gameState;
-    private State inputNameState;
     private KeyInput keyinput;
 
 
@@ -121,13 +115,12 @@ public class GameEngine implements Runnable {
         Assets.init();
         this.display = new Display(this.title, 800, 600);
         this.mouseInput =new MouseInput(this.display);
-        mainMenuState = new MainMenuState();
-        inputNameState = new InputNameState();
         this.keyinput = new KeyInput(this, this.display);
+        
+        mainMenuState = new MainMenuState();
 
         //highScoreState = new HighScoresState();
 
-
-        StateManager.setCurrentState(inputNameState);
+        StateManager.setCurrentState(mainMenuState);
     }
 }

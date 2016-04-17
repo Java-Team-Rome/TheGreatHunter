@@ -9,16 +9,13 @@ public class Hunter implements Killer{
 	private double gold;
 	private int amountOfPreyKilled;
 
-	public Hunter() {
+	public Hunter(String name) {
+		this.name = name;
 		inventory = new Inventory();
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public double getGold() {

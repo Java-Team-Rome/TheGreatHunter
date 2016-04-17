@@ -5,12 +5,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import com.company.graphics.Assets;
+import com.company.models.Button;
 
 public class InputNameState extends State {
 
+	public static Button okButton = new Button(650, 450, "OK", Assets.button);
     public static StringBuilder sb = new StringBuilder();
-
-
+    
     @Override
     public void display(Graphics graphics) {
 
@@ -30,7 +31,7 @@ public class InputNameState extends State {
         graphics.drawRect(260,370,280,40);
         graphics.drawString(sb.toString(),265,395);
 
-
+        okButton.display(graphics);
     }
 
     @Override
