@@ -5,10 +5,20 @@ import java.awt.image.BufferedImage;
 import com.company.enums.ImageAlbum;
 
 public class Assets {
-	 public static BufferedImage background;
+	 public static BufferedImage mainMenuBackground;
+	 public static BufferedImage marketBackground;
+	 public static BufferedImage highscoresBackground;
+	 public static BufferedImage gameBackground;
+	 public static BufferedImage woodenBackground;
+	 
+	 public static BufferedImage playButton;
+	 public static BufferedImage enterButton;
+	 public static BufferedImage exitButton;
+	 public static BufferedImage menuButton;
+	 public static BufferedImage scoresButton;
+	 public static BufferedImage sellButton;
+	 
 	 public static BufferedImage sight;
-	 public static BufferedImage button;
-	 public static BufferedImage woodenWall;
 	 public static BufferedImage stickyNote;
 	 public static SpriteSheet rabbit;
 	 public static SpriteSheet duck;
@@ -19,11 +29,20 @@ public class Assets {
 	 public static SpriteSheet eagle;
 
     public static void init() {
-        background = ImageLoader.loadImage(ImageAlbum.Background.getPath());
-        woodenWall = ImageLoader.loadImage(ImageAlbum.WoodenWall.getPath());
+        gameBackground = ImageLoader.loadImage(ImageAlbum.GameBackground.getPath());
+        mainMenuBackground = ImageLoader.loadImage(ImageAlbum.MainMenuBackground.getPath());
+        marketBackground = ImageLoader.loadImage(ImageAlbum.MarketBackground.getPath());
+        highscoresBackground = ImageLoader.loadImage(ImageAlbum.HighScoresBackground.getPath());
+        woodenBackground = ImageLoader.loadImage(ImageAlbum.WoodenBackground.getPath());
+        
+        playButton = ImageLoader.loadImage(ImageAlbum.PlayButton.getPath());
+        enterButton = ImageLoader.loadImage(ImageAlbum.EnterButton.getPath());
+        scoresButton = ImageLoader.loadImage(ImageAlbum.ScoresButton.getPath());
+        exitButton = ImageLoader.loadImage(ImageAlbum.ExitButton.getPath());
+        sellButton = ImageLoader.loadImage(ImageAlbum.SellButton.getPath());
+        menuButton = ImageLoader.loadImage(ImageAlbum.MenuButton.getPath());
+        
         stickyNote = ImageLoader.loadImage(ImageAlbum.StickyNote.getPath());
-
-        button = ImageLoader.loadImage(ImageAlbum.Button.getPath());
         sight = ImageLoader.loadImage(ImageAlbum.Sight.getPath());
         
         rabbit = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Rabbit.getPath()));

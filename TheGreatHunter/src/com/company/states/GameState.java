@@ -15,7 +15,7 @@ public class GameState extends State {
 
 	private Prey prey;
 	private int timer;
-	private int seconds = 90;
+	private int seconds = 30;
 	private Hunter hunter;
 	private Point mousePosition;
 
@@ -26,7 +26,7 @@ public class GameState extends State {
 
 	@Override
 	public void display(Graphics graphics) {
-		graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+		graphics.drawImage(Assets.gameBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
 		if (prey.isAlive() && !prey.isHasEscaped()) {
 			prey.display(graphics);
@@ -56,7 +56,7 @@ public class GameState extends State {
 		
 		seconds--;
 		if (seconds < 0) {
-			System.exit(1);
+			 StateManager.setCurrentState(new MarketState());
 		}			
 	}
 	

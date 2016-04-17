@@ -1,8 +1,11 @@
 package com.company.enums;
 
 public enum ImageAlbum {
-    Background("/green.jpg"),
-    Button("/button.png"),
+    GameBackground("/green.jpg"),
+    MainMenuBackground("/main-menu.png"),
+    MarketBackground("/market.png"),
+    HighScoresBackground("/high-scores.png"),
+    WoodenBackground("/wood.jpg"),
     Rabbit("/rabbit.png"),
     Duck("/duck.png"),
     Fox("/fox.png"),
@@ -11,9 +14,14 @@ public enum ImageAlbum {
     Boar("/boar.png"),
     Eagle("/eagle.png"),
 	Sight("/sight.png"),
-	WoodenWall("/wood.jpg"),
-	StickyNote("/note.png");
-	
+	StickyNote("/note.png"),
+	PlayButton("/button-play.png"),
+	ExitButton("/button-exit.png"),
+	EnterButton("/button-enter.png"),
+	ScoresButton("/button-scores.png"),
+	MenuButton("/button-menu.png"),
+	SellButton("/button-sell.png");
+
     private String path;
 
     ImageAlbum(String path) {

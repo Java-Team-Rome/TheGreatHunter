@@ -10,8 +10,10 @@ import java.awt.image.BufferedImage;
 
 import com.company.graphics.Display;
 import com.company.states.GameState;
+import com.company.states.HighScoresState;
 import com.company.states.InputNameState;
 import com.company.states.MainMenuState;
+import com.company.states.MarketState;
 import com.company.states.StateManager;
 
 public class MouseInput implements MouseListener, MouseMotionListener {
@@ -34,35 +36,44 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	        int mouseY = e.getY();
 
 	        if(StateManager.getCurrentState() instanceof MainMenuState) {
-	            //Play Button
+	            // Play Button
 	        	if(MainMenuState.playButton.getColliderBox().contains(mouseX, mouseY)){
 	                StateManager.setCurrentState(new InputNameState());
 	            }
 
-	            //High Scores Button
-//	            if (MainMenuState.highScoreButton.getColliderBox().contains(mouseX, mouseY)) {
-//	                StateManager.setCurrentState(new HighScoresState());
-//	            }
-	            
-	            //Exit Button
-	            if (MainMenuState.exitButton.getColliderBox().contains(mouseX, mouseY)) {
-	                System.exit(0);
+	            // High Scores Button
+	            if (MainMenuState.scoresButton.getColliderBox().contains(mouseX, mouseY)) {
+	                StateManager.setCurrentState(new HighScoresState());
 	            }
 	            
+	            // Exit Button
+	            if (MainMenuState.exitButton.getColliderBox().contains(mouseX, mouseY)) {
+	                System.exit(0);
+	            }   
 	        } else if (StateManager.getCurrentState() instanceof GameState) {
 	        	 GameState gameState = (GameState)StateManager.getCurrentState();
 	        	 
 	        	if (gameState.getCurrentPrey().getColliderBox().contains(mouseX, mouseY)) {
 					gameState.killPrey(gameState.getCurrentPrey());
 				}
-	        	
 	        } else if (StateManager.getCurrentState() instanceof InputNameState) {
 	        	
-	        	if(InputNameState.okButton.getColliderBox().contains(mouseX, mouseY)){
+	        	// Enter name button
+	        	if(InputNameState.enterButton.getColliderBox().contains(mouseX, mouseY)) {
 	                StateManager.setCurrentState(new GameState(InputNameState.sb.toString()));
 	                BufferedImage blankCursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 	                Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankCursorImg, new Point(0, 0), null);
 	    	        display.getCanvas().setCursor(blankCursor);
+	            }
+	        } else if (StateManager.getCurrentState() instanceof MarketState) {
+	        	// Sell button
+	        	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
+	                StateManager.setCurrentState(new HighScoresState());
+	            }
+	        } else if (StateManager.getCurrentState() instanceof HighScoresState) {
+	        	// Main menu button
+	        	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
+	                StateManager.setCurrentState(new MainMenuState());
 	            }
 	        }
 	    }
@@ -88,6 +99,8 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 			if (StateManager.getCurrentState() instanceof GameState) {
 	        	 GameState gameState = (GameState)StateManager.getCurrentState();
 	        	 gameState.setMousePosition(e.getX(), e.getY());
+			} else if (StateManager.getCurrentState() instanceof MarketState) {
+				display.getCanvas().setCursor(Cursor.getDefaultCursor());
 			}
 		}
 }

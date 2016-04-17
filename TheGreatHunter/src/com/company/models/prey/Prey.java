@@ -105,10 +105,10 @@ public abstract class Prey extends GameObject {
 		speed %= 3;
 		this.setX(getX() + 15);
 		
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(500);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 }
