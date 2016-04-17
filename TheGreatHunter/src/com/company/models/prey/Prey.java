@@ -1,6 +1,7 @@
 package com.company.models.prey;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import com.company.enums.SecondaryResourceType;
 import com.company.graphics.SpriteSheet;
@@ -17,6 +18,7 @@ public abstract class Prey extends GameObject {
     private int height;
     SpriteSheet spriteSheet;
     private boolean hasEscaped;
+    private Rectangle colliderBox;
 
 	public Prey(int x, int y, SpriteSheet spriteSheet, int width, int height, double weight, double meatPercentage, 
 			SecondaryResourceType secondaryResourceType) {
@@ -29,6 +31,7 @@ public abstract class Prey extends GameObject {
 		this.isAlive = true;
 		this.spriteSheet = spriteSheet;
 		this.hasEscaped = false;
+		this.colliderBox = new Rectangle(this.getX(), this.getY(), this.width, this.height);
 	}
 
 	public int getWidth() {
@@ -82,21 +85,28 @@ public abstract class Prey extends GameObject {
 	public void setHasEscaped(boolean hasEscaped) {
 		this.hasEscaped = hasEscaped;
 	}
+	
+	public Rectangle getColliderBox() {
+		return colliderBox;
+	}
 
 	@Override
 	public void display(Graphics graphics) {
 		if (!hasEscaped && isAlive) {
-			graphics.drawImage(this.spriteSheet.crop(speed * width, 0, width, height), this.getX(), this.getY(), null);
+			graphics.drawImage(this.spriteSheet.crop(speed * this.width, 0, this.width, this.height), this.getX(), this.getY(), null);	
 		}
 	}
 
 	@Override
 	public void update() {
+		this.colliderBox.setBounds(this.getX(), this.getY(), this.width, this.height);
+		
 		speed++;
 		speed %= 3;
-		this.setX(getX() + 20);
-		 try {
-			Thread.sleep(300);
+		this.setX(getX() + 15);
+		
+		try {
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

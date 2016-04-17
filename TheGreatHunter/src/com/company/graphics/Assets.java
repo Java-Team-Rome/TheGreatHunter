@@ -6,6 +6,7 @@ import com.company.enums.ImageAlbum;
 
 public class Assets {
 	 public static BufferedImage background;
+	 public static BufferedImage sight;
 	 public static BufferedImage button;
 	 public static SpriteSheet rabbit;
 	 public static SpriteSheet duck;
@@ -19,6 +20,7 @@ public class Assets {
         background = ImageLoader.loadImage(ImageAlbum.Background.getPath());
         
         button = ImageLoader.loadImage(ImageAlbum.Button.getPath());
+        sight = ImageLoader.loadImage(ImageAlbum.Sight.getPath());
         
         rabbit = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Rabbit.getPath()));
         duck = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Duck.getPath()));
@@ -26,6 +28,6 @@ public class Assets {
         wolf = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Wolf.getPath()));
         deer = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Deer.getPath()));
         boar = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Boar.getPath()));
-	   eagle = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Eagle.getPath()));
+        eagle = new SpriteSheet(ImageLoader.loadImage(ImageAlbum.Eagle.getPath()));
     }
 }

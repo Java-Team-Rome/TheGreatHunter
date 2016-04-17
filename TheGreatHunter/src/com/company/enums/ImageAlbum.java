@@ -9,7 +9,8 @@ public enum ImageAlbum {
     Wolf("/wolf.png"),
     Deer("/deer.png"),
     Boar("/boar.png"),
-    Eagle("/eagle.png");
+    Eagle("/eagle.png"),
+	Sight("/sight.png");
 	
     private String path;
 
