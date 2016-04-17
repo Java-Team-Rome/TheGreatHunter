@@ -14,10 +14,17 @@ import com.company.utils.Constants;
 public class GameState extends State {
 
 	private Prey prey;
-	private int timer;
 	private int seconds = 30;
 	private Hunter hunter;
 	private Point mousePosition;
+	private long timerSeconds = System.nanoTime();
+	private long timerNextPreyDelay = System.nanoTime();
+	private long timerUpdateDelay = System.nanoTime();
+	
+	private long timeDelay = 1000;
+	private long nextPreyDelay = 800; 
+	private long updateDelay = 50; 
+
 
 	public GameState(String playerName) {
 		hunter = new Hunter(playerName);
@@ -32,11 +39,17 @@ public class GameState extends State {
 			prey.display(graphics);
 		}
 
-		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 30);
+		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 24);
 		graphics.setFont(secondsFont);
 		graphics.setColor(Color.white);
-		graphics.drawString(Integer.toString(seconds), 960, 40);
-		graphics.drawString(Integer.toString(this.hunter.getAmountOfPreyKilled()), 20, 40);
+		
+
+		graphics.drawString(Integer.toString(seconds), 960, 30);
+
+		graphics.drawString(String.format("Prey Killed: %d | ", this.hunter.getAmountOfPreyKilled()), 20, 30);
+		graphics.drawString(String.format("Meat: %.2f kg. | ", this.hunter.getInventory().getMeat()), 200, 30);
+		graphics.drawString(String.format("Leather: %.2f kg. | ", this.hunter.getInventory().getLeather()), 440, 30);
+		graphics.drawString(String.format("Feather: %.2f kg. | ", this.hunter.getInventory().getFeather()), 710, 30);
 		
 		if (mousePosition != null) {
 			graphics.drawImage(Assets.sight, mousePosition.x, mousePosition.y, null);
@@ -45,16 +58,26 @@ public class GameState extends State {
 
 	@Override
 	public void update() {	
-		timer++;
-		if (timer == 3) {
+		long elapsedNextPrey = (System.nanoTime() - this.timerNextPreyDelay) / 1000000;
+		long elapsed = (System.nanoTime() - this.timerSeconds) / 1000000;
+		long elapsedUpdate = (System.nanoTime() - this.timerUpdateDelay) / 1000000;
+		
+		if (elapsedNextPrey > this.nextPreyDelay) {
 			prey.isHasEscaped();
 			prey = MapInitializer.generatePray();
-			timer = 0;
+			timerNextPreyDelay = System.nanoTime();
 		}
 
-		prey.update();
+		if (elapsedUpdate > this.updateDelay) {
+			prey.update();
+			timerUpdateDelay = System.nanoTime();
+		}
 		
-		seconds--;
+		if(elapsed > this.timeDelay) {
+			seconds--;
+			timerSeconds = System.nanoTime();
+		}
+		
 		if (seconds < 0) {
 			 StateManager.setCurrentState(new MarketState(this.hunter));
 		}			

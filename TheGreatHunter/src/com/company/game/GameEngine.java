@@ -115,12 +115,10 @@ public class GameEngine implements Runnable {
     private void init() {
         Assets.init();
         this.display = new Display(this.title, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-        this.mouseInput =new MouseInput(this.display);
+        this.mouseInput = new MouseInput(this.display);
         this.keyinput = new KeyInput(this, this.display);
         
         mainMenuState = new MainMenuState();
-
-        //highScoreState = new HighScoresState();
 
         StateManager.setCurrentState(mainMenuState);
     }

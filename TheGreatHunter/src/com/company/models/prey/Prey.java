@@ -100,15 +100,8 @@ public abstract class Prey extends GameObject {
 	@Override
 	public void update() {
 		this.colliderBox.setBounds(this.getX(), this.getY(), this.width, this.height);
-		
 		speed++;
 		speed %= 3;
-		this.setX(getX() + 15);
-		
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		this.setX(getX() + 20);
 	}
 }

@@ -38,9 +38,12 @@ public class Hunter implements Killer{
 	
 	@Override
 	public void kill(Prey prey) {
-		inventory.accept(prey);
-		prey.setAlive(false);
-		this.amountOfPreyKilled++;
+		if (prey.isAlive()) {
+			inventory.accept(prey);
+			prey.setAlive(false);
+			this.amountOfPreyKilled++;
+		}
+		
 	}
 	
 	public void sell() {

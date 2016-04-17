@@ -10,21 +10,10 @@ public class Deer extends Mammal {
 
     @Override
     public void update(){
-
         this.getColliderBox().setBounds(this.getX(), this.getX(), this.getWidth(), this.getHeight());
-
-
 
         speed++;
         speed %= 3;
-        this.setX(getX() - 15);
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        this.setX(getX() - 20);
     }
-
 }
