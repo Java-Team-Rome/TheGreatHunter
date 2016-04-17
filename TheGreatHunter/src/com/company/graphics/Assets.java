@@ -20,6 +20,9 @@ public class Assets {
 	 
 	 public static BufferedImage sight;
 	 public static BufferedImage stickyNote;
+	 public static BufferedImage scoreList;
+	 public static BufferedImage receipt;
+	 
 	 public static SpriteSheet rabbit;
 	 public static SpriteSheet duck;
 	 public static SpriteSheet fox;
@@ -42,6 +45,8 @@ public class Assets {
         sellButton = ImageLoader.loadImage(ImageAlbum.SellButton.getPath());
         menuButton = ImageLoader.loadImage(ImageAlbum.MenuButton.getPath());
         
+        receipt = ImageLoader.loadImage(ImageAlbum.Receipt.getPath());
+        scoreList = ImageLoader.loadImage(ImageAlbum.ScoreList.getPath());
         stickyNote = ImageLoader.loadImage(ImageAlbum.StickyNote.getPath());
         sight = ImageLoader.loadImage(ImageAlbum.Sight.getPath());
         

@@ -14,6 +14,10 @@ public class HighScoresState extends State {
 	public void display(Graphics graphics) {
 		graphics.drawImage(Assets.highscoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 		
+		graphics.drawImage(Assets.scoreList, 300, 120, null);
+		
+		// DRAW SCORES HERE:
+		
         menuButton.display(graphics);
 	}
 

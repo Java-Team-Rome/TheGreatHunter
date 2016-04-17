@@ -13,6 +13,9 @@ public class MarketState extends State {
 	@Override
 	public void display(Graphics graphics) {
 		graphics.drawImage(Assets.marketBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+		graphics.drawImage(Assets.receipt, 460, 170, null);
+		
+		//DRAW LIST OF INVENTIRY HERE:
 		
         sellButton.display(graphics);
 	}

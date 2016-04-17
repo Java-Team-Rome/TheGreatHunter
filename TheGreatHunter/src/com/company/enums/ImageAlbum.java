@@ -20,7 +20,9 @@ public enum ImageAlbum {
 	EnterButton("/button-enter.png"),
 	ScoresButton("/button-scores.png"),
 	MenuButton("/button-menu.png"),
-	SellButton("/button-sell.png");
+	SellButton("/button-sell.png"),
+	ScoreList("/scoreList.png"),
+	Receipt("/receipt.png");
 
     private String path;
 
