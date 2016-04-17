@@ -27,14 +27,14 @@ public class KeyInput implements KeyListener{
 
         if (StateManager.getCurrentState() instanceof InputNameState) {
 
-            if (key>='A' && key<='Z' && InputNameState.sb.length()< 14) {
-                InputNameState.sb.append((char) key);
+            if (key>='A' && key<='Z' && InputNameState.stringBuilger.length()< 14) {
+                InputNameState.stringBuilger.append((char) key);
             }
-            else if (key == KeyEvent.VK_BACK_SPACE && InputNameState.sb.length()>0) {
-                InputNameState.sb.deleteCharAt(InputNameState.sb.length()-1);
+            else if (key == KeyEvent.VK_BACK_SPACE && InputNameState.stringBuilger.length()>0) {
+                InputNameState.stringBuilger.deleteCharAt(InputNameState.stringBuilger.length()-1);
             }
             else if (key == KeyEvent.VK_SPACE){
-                InputNameState.sb.append(" ");
+                InputNameState.stringBuilger.append(" ");
             }
         }
     }

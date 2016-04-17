@@ -11,7 +11,7 @@ import com.company.utils.Constants;
 public class InputNameState extends State {
 
 	public static Button enterButton = new Button(420, 530, Assets.enterButton);
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuilder stringBuilger = new StringBuilder();
     
     @Override
     public void display(Graphics graphics) {
@@ -26,7 +26,7 @@ public class InputNameState extends State {
         
         Font buttonsFont = new Font("Comic Sans MS", Font.BOLD, 20);
         graphics.setFont(buttonsFont);
-        graphics.drawString(sb.toString(), 380, 370);
+        graphics.drawString(stringBuilger.toString(), 380, 370);
 
         enterButton.display(graphics);
     }

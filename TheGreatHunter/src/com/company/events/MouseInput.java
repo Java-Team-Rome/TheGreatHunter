@@ -60,7 +60,8 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 	        	
 	        	// Enter name button
 	        	if(InputNameState.enterButton.getColliderBox().contains(mouseX, mouseY)) {
-	                StateManager.setCurrentState(new GameState(InputNameState.sb.toString()));
+	                StateManager.setCurrentState(new GameState(InputNameState.stringBuilger.toString()));
+	                InputNameState.stringBuilger.setLength(0);
 	                BufferedImage blankCursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 	                Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankCursorImg, new Point(0, 0), null);
 	    	        display.getCanvas().setCursor(blankCursor);
