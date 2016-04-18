@@ -6,15 +6,9 @@ import java.io.*;
 import java.util.*;
 
 public class HighScores {
-	
     private static String ScoresPath = "resources/HighScores.txt";
     
     private static TreeMap<String,HunterScore> highScores = new TreeMap<>();
-    
-    public static TreeMap<String,HunterScore> getScores()
-    {
-        return highScores;
-    }
     
     public static void load() {
         try (BufferedReader fileReader = new BufferedReader(new FileReader(ScoresPath))) {
@@ -29,6 +23,7 @@ public class HighScores {
                 highScores.put(name, new HunterScore(gold, amountOfPreyKilled));
                 line = fileReader.readLine();
             }
+
         } catch (IOException ioex) {
             System.err.println("Cannot read the file");
         }
@@ -36,9 +31,15 @@ public class HighScores {
     
     public static void save(String name, HunterScore score) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath,true),true)) {
-            writer.println(name + " " + score.getGold() + " " + score.getAmountOfPreyKilled());
+            writer.printf("%s %.2f %d",name,score.getGold(),score.getAmountOfPreyKilled());
+            writer.println();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static TreeMap<String,HunterScore> getScores()
+    {
+        return highScores;
     }
 }
