@@ -9,12 +9,14 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
 import com.company.graphics.Display;
+import com.company.models.HunterScore;
 import com.company.states.GameState;
 import com.company.states.HighScoresState;
 import com.company.states.InputNameState;
 import com.company.states.MainMenuState;
 import com.company.states.MarketState;
 import com.company.states.StateManager;
+import com.company.utils.HighScores;
 
 public class MouseInput implements MouseListener, MouseMotionListener {
 	private Display display;
@@ -70,8 +72,9 @@ public class MouseInput implements MouseListener, MouseMotionListener {
         	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
         		MarketState marketState = (MarketState)StateManager.getCurrentState();
         		marketState.getCurrentHunter().sell();
-        		 
-        		 // TODO save high scores:
+
+                HighScores.save(marketState.getCurrentHunter().getName(),new HunterScore(marketState.getCurrentHunter()
+                        .getGold(),marketState.getCurrentHunter().getAmountOfPreyKilled()));
         		 
                  StateManager.setCurrentState(new HighScoresState());
             }
