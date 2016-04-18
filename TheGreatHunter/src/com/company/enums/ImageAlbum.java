@@ -1,7 +1,7 @@
 package com.company.enums;
 
 public enum ImageAlbum {
-    GameBackground("/green.jpg"),
+    GameBackground("/green.png"),
     MainMenuBackground("/main-menu.png"),
     MarketBackground("/market.png"),
     HighScoresBackground("/high-scores.png"),
