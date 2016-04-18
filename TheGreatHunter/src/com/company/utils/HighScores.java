@@ -20,7 +20,15 @@ public class HighScores {
                 String name = input[0];
                 Double gold = Double.parseDouble(input[1]);
                 int amountOfPreyKilled = Integer.parseInt(input[2]);
-                highScores.put(name, new HunterScore(gold, amountOfPreyKilled));
+
+                if (highScores.containsKey(name)) {
+                    if (highScores.get(name).getAmountOfPreyKilled() < amountOfPreyKilled) {
+                        highScores.put(name, new HunterScore(gold, amountOfPreyKilled));
+                    }
+                } else {
+                    highScores.put(name, new HunterScore(gold, amountOfPreyKilled));
+                }
+
                 line = fileReader.readLine();
             }
 
@@ -31,7 +39,7 @@ public class HighScores {
     
     public static void save(String name, HunterScore score) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath,true),true)) {
-            writer.printf("%s %.2f %d",name,score.getGold(),score.getAmountOfPreyKilled());
+            writer.printf("%s %.2f %d", name, score.getGold(), score.getAmountOfPreyKilled());
             writer.println();
         } catch (IOException e) {
             e.printStackTrace();

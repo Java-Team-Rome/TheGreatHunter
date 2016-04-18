@@ -7,7 +7,7 @@ import com.company.enums.ImageAlbum;
 public class Assets {
 	 public static BufferedImage mainMenuBackground;
 	 public static BufferedImage marketBackground;
-	 public static BufferedImage highscoresBackground;
+	 public static BufferedImage highScoresBackground;
 	 public static BufferedImage gameBackground;
 	 public static BufferedImage woodenBackground;
 	 
@@ -37,7 +37,7 @@ public class Assets {
         gameBackground = ImageLoader.loadImage(ImageAlbum.GameBackground.getPath());
         mainMenuBackground = ImageLoader.loadImage(ImageAlbum.MainMenuBackground.getPath());
         marketBackground = ImageLoader.loadImage(ImageAlbum.MarketBackground.getPath());
-        highscoresBackground = ImageLoader.loadImage(ImageAlbum.HighScoresBackground.getPath());
+        highScoresBackground = ImageLoader.loadImage(ImageAlbum.HighScoresBackground.getPath());
         woodenBackground = ImageLoader.loadImage(ImageAlbum.WoodenBackground.getPath());
         
         playButton = ImageLoader.loadImage(ImageAlbum.PlayButton.getPath());
