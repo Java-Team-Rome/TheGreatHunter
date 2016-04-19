@@ -99,9 +99,11 @@ public abstract class Prey extends GameObject {
 
 	@Override
 	public void update() {
+		if (!hasEscaped && isAlive) {
 		this.colliderBox.setBounds(this.getX(), this.getY(), this.width, this.height);
 		speed++;
 		speed %= 3;
 		this.setX(getX() + 20);
+		}
 	}
 }

@@ -3,7 +3,8 @@ package com.company.models;
 import com.company.interfaces.Killer;
 import com.company.models.prey.Prey;
 
-public class Hunter implements Killer{
+public class Hunter implements Killer {
+	
 	private final Inventory inventory;
 	private String name;
 	private double gold;

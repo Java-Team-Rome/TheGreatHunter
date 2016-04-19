@@ -26,7 +26,7 @@ public class InputNameState extends State {
         
         Font buttonsFont = new Font("Comic Sans MS", Font.BOLD, 20);
         graphics.setFont(buttonsFont);
-        graphics.drawString(stringBuilger.toString(), 380, 370);
+        graphics.drawString(stringBuilger.toString(), 400, 370);
 
         enterButton.display(graphics);
     }

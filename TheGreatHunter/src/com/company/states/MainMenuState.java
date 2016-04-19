@@ -11,9 +11,6 @@ public class MainMenuState extends State {
 	public static Button playButton = new Button(140, 340, Assets.playButton);
 	public static Button scoresButton = new Button(140, 420, Assets.scoresButton);
     public static Button exitButton = new Button(140, 500, Assets.exitButton);
-
-	public MainMenuState() {
-	}
 	
 	@Override
 	public void display(Graphics graphics) {

@@ -14,10 +14,10 @@ public class MapInitializer {
             int randomY = 0;
             
             if (randomPrey.equals("duck") || randomPrey.equals("eagle")) {
-            	randomX = RandomGenerator.getNextRandom(700);
-            	randomY = RandomGenerator.getNextRandom(200);
+            	randomX = RandomGenerator.getNextRandom(900) + 100;
+            	randomY = RandomGenerator.getNextRandom(300) + 40;
 			} else {
-				randomX = RandomGenerator.getNextRandom(700);
+				randomX = RandomGenerator.getNextRandom(800) + 100;
 				randomY = RandomGenerator.getNextRandom(200) + 300;
             }
 

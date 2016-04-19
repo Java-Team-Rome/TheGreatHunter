@@ -6,12 +6,11 @@ import java.io.*;
 import java.util.*;
 
 public class HighScores {
-    private static String ScoresPath = "resources/HighScores.txt";
-    
+
     private static TreeMap<String,HunterScore> highScores = new TreeMap<>();
     
     public static void load() {
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(ScoresPath))) {
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(Constants.HIGH_SCORES_PATH))) {
             String line = fileReader.readLine();
             String[] input;
 
@@ -31,14 +30,13 @@ public class HighScores {
 
                 line = fileReader.readLine();
             }
-
         } catch (IOException ioex) {
             System.err.println("Cannot read the file");
         }
     }
     
     public static void save(String name, HunterScore score) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(ScoresPath,true),true)) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.HIGH_SCORES_PATH, true), true)) {
             writer.printf("%s %.2f %d", name, score.getGold(), score.getAmountOfPreyKilled());
             writer.println();
         } catch (IOException e) {
@@ -46,8 +44,7 @@ public class HighScores {
         }
     }
 
-    public static TreeMap<String,HunterScore> getScores()
-    {
+    public static TreeMap<String, HunterScore> getScores() {
         return highScores;
     }
 }

@@ -1,6 +1,5 @@
 package com.company.models;
 
-
 import java.util.function.Consumer;
 
 import com.company.utils.Constants;
@@ -26,8 +25,20 @@ public class Market implements Consumer<Hunter> {
 
         return instance;
     }
+    
+    public double getPriceMeatPerUnit() {
+		return priceMeatPerUnit;
+	}
 
-    @Override
+	public double getPriceLeatherPerUnit() {
+		return priceLeatherPerUnit;
+	}
+
+	public double getPriceFeatherPerUnit() {
+		return priceFeatherPerUnit;
+	}
+	
+	@Override
     public void accept(Hunter hunter) {
         hunter.setGold(this.evaluate(hunter.getInventory()));
     }

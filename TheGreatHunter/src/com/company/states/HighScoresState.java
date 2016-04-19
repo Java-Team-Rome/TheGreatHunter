@@ -4,7 +4,6 @@ import java.awt.*;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import com.company.graphics.Assets;
@@ -19,8 +18,10 @@ public class HighScoresState extends State {
 
 	@Override
 	public void display(Graphics graphics) {
-		int y = 250;
+		int yCoord = 250;
+		
 		HighScores.load();
+		
 		LinkedHashMap<String,HunterScore> sorted = HighScores.getScores()
 				.entrySet()
 				.stream()
@@ -33,16 +34,16 @@ public class HighScoresState extends State {
 		graphics.drawImage(Assets.scoreList, 300, 120, null);
 		graphics.drawImage(Assets.trophy, 180, 220, null);
 
-		Font font = new Font("Comic Sans MS", Font.BOLD, 17);
+		Font font = new Font("Comic Sans MS", Font.BOLD, 16);
 		graphics.setFont(font);
 		graphics.setColor(Color.black);
 
 
 		for (Map.Entry<String, HunterScore> score : sorted.entrySet()) {
-			graphics.drawString(score.getKey(),450,y);
-			graphics.drawString(String.valueOf(score.getValue().getAmountOfPreyKilled()), 550, y);
-			graphics.drawString(score.getValue().getGold().toString(),665,y);
-			y +=20;
+			graphics.drawString(score.getKey(), 410, yCoord);
+			graphics.drawString(Integer.toString(score.getValue().getAmountOfPreyKilled()), 580, yCoord);
+			graphics.drawString(String.format("%.2f", score.getValue().getGold()), 670, yCoord);
+			yCoord += 20;
 		}
 
         menuButton.display(graphics);

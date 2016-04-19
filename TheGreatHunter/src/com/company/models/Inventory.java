@@ -35,24 +35,14 @@ public class Inventory implements Consumer<Prey> {
         this.leather = leather;
     }
 
-
     @Override
     public void accept(Prey prey) {
         this.meat += prey.getWeight() * prey.getMeatPercentage();
 
         if (prey.getSecondaryResourceType().equals(SecondaryResourceType.LEATHER)){
-            leather += prey.getWeight() * ( 1 - prey.getMeatPercentage());
+            this.leather += prey.getWeight() * ( 1 - prey.getMeatPercentage());
         } else if (prey.getSecondaryResourceType().equals(SecondaryResourceType.FEATHER)){
-            feather += prey.getWeight() * ( 1 - prey.getMeatPercentage());
+            this.feather += prey.getWeight() * ( 1 - prey.getMeatPercentage());
         }
     }
 }
-
-
-
-
-
-
-
-
-

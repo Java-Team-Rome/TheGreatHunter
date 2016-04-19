@@ -1,7 +1,8 @@
 package com.company.models;
 
+import java.io.Serializable;
 
-public class HunterScore implements Comparable<HunterScore>  {
+public class HunterScore implements Comparable<HunterScore>, Serializable  {
 
     private int AmountOfPreyKilled;
     private Double Gold;

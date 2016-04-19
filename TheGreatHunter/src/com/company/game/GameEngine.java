@@ -3,15 +3,14 @@ package com.company.game;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-import com.company.events.KeyInput;
-import com.company.events.MouseInput;
+import com.company.eventHandlers.KeyInput;
+import com.company.eventHandlers.MouseInput;
 import com.company.graphics.Assets;
 import com.company.graphics.Display;
 import com.company.states.MainMenuState;
 import com.company.states.State;
 import com.company.states.StateManager;
 import com.company.utils.Constants;
-
 
 public class GameEngine implements Runnable {
 
@@ -119,7 +118,6 @@ public class GameEngine implements Runnable {
         this.keyinput = new KeyInput(this, this.display);
         
         mainMenuState = new MainMenuState();
-
         StateManager.setCurrentState(mainMenuState);
     }
 }

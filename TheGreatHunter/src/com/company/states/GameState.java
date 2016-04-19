@@ -39,17 +39,16 @@ public class GameState extends State {
 			prey.display(graphics);
 		}
 
-		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 24);
+		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 17);
 		graphics.setFont(secondsFont);
-		graphics.setColor(Color.black);
-
+		graphics.setColor(Color.white);
 
 		graphics.drawString(Integer.toString(seconds), 960, 30);
 
-		graphics.drawString(String.format(" %d  ", this.hunter.getAmountOfPreyKilled()), 55, 30);
-		graphics.drawString(String.format(" %.2f kg.  ", this.hunter.getInventory().getMeat()), 192, 30);
-		graphics.drawString(String.format(" %.2f kg.  ", this.hunter.getInventory().getLeather()), 330, 30);
-		graphics.drawString(String.format(" %.2f kg.  ", this.hunter.getInventory().getFeather()), 495, 30);
+		graphics.drawString(String.format("%d", this.hunter.getAmountOfPreyKilled()), 60, 30);
+		graphics.drawString(String.format("%.2f kg.", this.hunter.getInventory().getMeat()), 210, 30);
+		graphics.drawString(String.format("%.2f kg.", this.hunter.getInventory().getLeather()), 340, 30);
+		graphics.drawString(String.format("%.2f kg.", this.hunter.getInventory().getFeather()), 500, 30);
 
 		if (mousePosition != null) {
 			graphics.drawImage(Assets.sight, mousePosition.x, mousePosition.y, null);
@@ -59,7 +58,7 @@ public class GameState extends State {
 	@Override
 	public void update() {
 		long elapsedNextPrey = (System.nanoTime() - this.timerNextPreyDelay) / 1000000;
-		long elapsed = (System.nanoTime() - this.timerSeconds) / 1000000;
+		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1000000;
 		long elapsedUpdate = (System.nanoTime() - this.timerUpdateDelay) / 1000000;
 
 		if (elapsedNextPrey > this.nextPreyDelay) {
@@ -73,7 +72,7 @@ public class GameState extends State {
 			timerUpdateDelay = System.nanoTime();
 		}
 
-		if(elapsed > this.timeDelay) {
+		if(elapsedSeconds > this.timeDelay) {
 			seconds--;
 			timerSeconds = System.nanoTime();
 		}

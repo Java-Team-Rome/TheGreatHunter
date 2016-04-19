@@ -1,4 +1,4 @@
-package com.company.events;
+package com.company.eventHandlers;
 
 import java.awt.Cursor;
 import java.awt.Point;
@@ -38,7 +38,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
         if(StateManager.getCurrentState() instanceof MainMenuState) {
             // Play Button
-        	if(MainMenuState.playButton.getColliderBox().contains(mouseX, mouseY)){
+        	if(MainMenuState.playButton.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new InputNameState());
             }
 
@@ -50,15 +50,16 @@ public class MouseInput implements MouseListener, MouseMotionListener {
             // Exit Button
             if (MainMenuState.exitButton.getColliderBox().contains(mouseX, mouseY)) {
                 System.exit(0);
-            }   
+            }
+            
         } else if (StateManager.getCurrentState() instanceof GameState) {
         	 GameState gameState = (GameState)StateManager.getCurrentState();
         	 
         	if (gameState.getCurrentPrey().getColliderBox().contains(mouseX, mouseY)) {
         		gameState.getHunter().kill(gameState.getCurrentPrey());
 			}
-        } else if (StateManager.getCurrentState() instanceof InputNameState) {
         	
+        } else if (StateManager.getCurrentState() instanceof InputNameState) {
         	// Enter name button
         	if(InputNameState.enterButton.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new GameState(InputNameState.stringBuilger.toString()));
@@ -67,14 +68,15 @@ public class MouseInput implements MouseListener, MouseMotionListener {
                 Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankCursorImg, new Point(0, 0), null);
     	        display.getCanvas().setCursor(blankCursor);
             }
+        	
         } else if (StateManager.getCurrentState() instanceof MarketState) {
         	// Sell button
         	if (MarketState.sellButton.getColliderBox().contains(mouseX, mouseY)) {
         		MarketState marketState = (MarketState)StateManager.getCurrentState();
         		marketState.getCurrentHunter().sell();
 
-                HighScores.save(marketState.getCurrentHunter().getName(),new HunterScore(marketState.getCurrentHunter()
-                        .getGold(),marketState.getCurrentHunter().getAmountOfPreyKilled()));
+                HighScores.save(marketState.getCurrentHunter().getName(), new HunterScore(marketState.getCurrentHunter()
+                        .getGold(), marketState.getCurrentHunter().getAmountOfPreyKilled()));
         		 
                  StateManager.setCurrentState(new HighScoresState());
             }
