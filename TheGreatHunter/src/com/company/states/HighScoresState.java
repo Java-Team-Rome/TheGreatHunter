@@ -40,7 +40,7 @@ public class HighScoresState extends State {
 
 
 		for (Map.Entry<String, HunterScore> score : sorted.entrySet()) {
-			graphics.drawString(score.getKey(), 410, yCoord);
+			graphics.drawString(score.getKey(), 435, yCoord);
 			graphics.drawString(Integer.toString(score.getValue().getAmountOfPreyKilled()), 580, yCoord);
 			graphics.drawString(String.format("%.2f", score.getValue().getGold()), 670, yCoord);
 			yCoord += 20;

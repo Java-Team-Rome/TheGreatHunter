@@ -22,14 +22,11 @@ public class KeyInput implements KeyListener{
         int key = e.getKeyCode();
         // User input
         if (StateManager.getCurrentState() instanceof InputNameState) {
-            if (key>='A' && key<='Z' && InputNameState.stringBuilger.length() < 10) {
+            if (key>='A' && key<='Z' && InputNameState.stringBuilger.length() < 8) {
                 InputNameState.stringBuilger.append((char) key);
             }
             else if (key == KeyEvent.VK_BACK_SPACE && InputNameState.stringBuilger.length() > 0) {
                 InputNameState.stringBuilger.deleteCharAt(InputNameState.stringBuilger.length() - 1);
-            }
-            else if (key == KeyEvent.VK_SPACE){
-                InputNameState.stringBuilger.append(" ");
             }
         }
     }
